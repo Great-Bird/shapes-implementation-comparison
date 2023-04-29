@@ -1,6 +1,9 @@
 # Project place file
 /shapes-implementation-comparison.rbxlx
 
+# Luau LSP source map
+sourcemap.json
+
 # Roblox Studio lock files
 /*.rbxlx.lock
 /*.rbxl.lock
