@@ -52,7 +52,7 @@ end
 export type Triangle = typeof(Triangle.new(...))
 
 function Triangle.Area(self: Triangle)
-    return 1/2 * self._height * self._base
+    return 0.5 * self._height * self._base
 end
 
 

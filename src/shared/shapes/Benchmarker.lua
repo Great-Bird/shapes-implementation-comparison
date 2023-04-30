@@ -3,7 +3,7 @@
 local function printBenchmarkResults(name: string, time: number, repetitions: number)
     print(`Benchmark for {name}:`)
     print(`Repeat count: {repetitions}`)
-    print(`Time: {time}, average: {time / repetitions}`)
+    print(`Time (ms): {time * 1000}, average (ms): {time / repetitions * 1000}\n`)
 end
 
 local Benchmarker = {}
