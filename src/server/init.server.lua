@@ -6,7 +6,7 @@ local ShapesData = require(game:GetService("ReplicatedStorage").Shared.shapes.Sh
 
 local shapeEnum = ShapesData.ShapeEnum
 
-local function totalAreaOOP(shapeObjects)
+local function totalAreaOOP(shapeObjects): number
     local accumulator = 0
     for _, shape in ipairs(shapeObjects) do
         accumulator += shape:Area()
@@ -14,9 +14,9 @@ local function totalAreaOOP(shapeObjects)
     return accumulator
 end
 
-local function getAreaIf(shape: ShapesData.Shape)
-    local result = 0
-    local type = shape.type
+local function getAreaIf(shape: ShapesData.Shape): number
+    local result: number = 0
+    local type: number = shape.type
     if type == shapeEnum.Square then
         result = shape.width * shape.width
     elseif type == shapeEnum.Rectangle then
@@ -28,7 +28,7 @@ local function getAreaIf(shape: ShapesData.Shape)
     end
     return result
 end
-local function totalAreaIf(shapes: {ShapesData.Shape})
+local function totalAreaIf(shapes: {ShapesData.Shape}): number
     local accumulator = 0
     for _, shape in shapes do
         accumulator += getAreaIf(shape)
