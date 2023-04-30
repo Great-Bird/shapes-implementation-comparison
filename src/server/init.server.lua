@@ -4,6 +4,8 @@ local Benchmarker = require(game:GetService("ReplicatedStorage").Shared.shapes.B
 local ShapesOOP = require(game:GetService("ReplicatedStorage").Shared.shapes.ShapesOOP)
 local ShapesData = require(game:GetService("ReplicatedStorage").Shared.shapes.ShapesData)
 
+local shapeEnum = ShapesData.ShapeEnum
+
 local function totalAreaOOP(shapeObjects)
     local accumulator = 0
     for _, shape in ipairs(shapeObjects) do
@@ -14,13 +16,14 @@ end
 
 local function getAreaIf(shape: ShapesData.Shape)
     local result = 0
-    if shape.type == "Square" then
+    local type = shape.type
+    if type == shapeEnum.Square then
         result = shape.width * shape.width
-    elseif shape.type == "Rectangle" then
+    elseif type == shapeEnum.Rectangle then
         result = shape.width * shape.height
-    elseif shape.type == "Triangle" then
+    elseif type == shapeEnum.Triangle then
         result = 0.5 * shape.width * shape.height
-    elseif shape.type == "Circle" then
+    elseif type == shapeEnum.Circle then
         result = math.pi * shape.width * shape.width
     end
     return result
@@ -33,11 +36,11 @@ local function totalAreaIf(shapes: {ShapesData.Shape})
     return accumulator
 end
 
-local shapeCoefficients: { [ShapesData.ShapeType]: number } = {
-    Square = 1,
-    Rectangle = 1,
-    Triangle = 0.5,
-    Circle = math.pi,
+local shapeCoefficients: { number } = {
+    [shapeEnum.Square] = 1,
+    [shapeEnum.Rectangle] = 1,
+    [shapeEnum.Triangle] = 0.5,
+    [shapeEnum.Circle] = math.pi,
 }
 local function getAreaCoefficientTable(shape: ShapesData.Shape)
     return shapeCoefficients[shape.type] * shape.width * shape.height

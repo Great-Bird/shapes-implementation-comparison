@@ -1,14 +1,21 @@
 export type ShapeType = "Square" | "Rectangle" | "Triangle" | "Circle"
 
 export type Shape = {
-    type: ShapeType,
+    type: number,
     width: number,
     height: number,
 }
 
+local shapeEnum = {
+    Square = 1,
+    Rectangle = 2,
+    Triangle = 3,
+    Circle = 4,
+}
+
 local function Square(side: number): Shape
     return {
-        type = "Square",
+        type = shapeEnum.Square,
         width = side,
         height = side,
     }
@@ -16,7 +23,7 @@ end
 
 local function Rectangle(width: number, height: number): Shape
     return {
-        type = "Rectangle",
+        type = shapeEnum.Rectangle,
         width = width,
         height = height,
     }
@@ -24,7 +31,7 @@ end
 
 local function Triangle(base: number, height: number): Shape
     return {
-        type = "Triangle",
+        type = shapeEnum.Triangle,
         width = base,
         height = height,
     }
@@ -32,7 +39,7 @@ end
 
 local function Circle(radius: number): Shape
     return {
-        type = "Circle",
+        type = shapeEnum.Circle,
         width = radius,
         height = radius,
     }
@@ -43,4 +50,6 @@ return {
     Rectangle = Rectangle,
     Triangle = Triangle,
     Circle = Circle,
+
+    ShapeEnum = shapeEnum,
 }
